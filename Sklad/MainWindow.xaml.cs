@@ -1,5 +1,6 @@
 ﻿using Sklad.Entity;
 using Sklad.Models;
+using Sklad.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,18 +37,8 @@ namespace Sklad
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-
-            //add_Group.Visibility =
-            //    add_Item.Visibility = Visibility.Visible;
-            //Global.db.tovari.Add(new Tovar()
-            //{
-            //    Name = "name",
-            //    ShtrixKod = "654654654",
-            //    Quantity = 20
-
-            //}) ;
-            //Global.db.SaveChanges();
-            //Refresh();
+            var win = new TovarElement();
+            win.ShowDialog();
         }
 
         private void remove_Click(object sender, RoutedEventArgs e)
