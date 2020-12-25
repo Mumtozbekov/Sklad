@@ -10,37 +10,135 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="remove" Click="remove_Click" Height="60" Width="120" Background="LightGray"/>
-            <Button x:Name="reload" Click="reload_Click" Height="60" Width="120" Background="LightGray"/>
-        </StackPanel>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Kirim">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                <Menu>
+                    <MenuItem  >
+                            <MenuItem.Header>
+                                <DockPanel>
+                                    <Image Source="/resources/shipment-add.png" DockPanel.Dock="Top"  Height="30"/>
+                                    <TextBlock Text="Qo'shish" DockPanel.Dock="Bottom" FontSize="13"/>
+                                </DockPanel>
+                            </MenuItem.Header>
+                        
+                    </MenuItem> 
+                    <MenuItem  >
+                            <MenuItem.Header>
+                                <DockPanel>
+                                    <Image Source="/resources/shipment-edit.png" DockPanel.Dock="Top"  Height="30"/>
+                                    <TextBlock Text="O'zgartirish" DockPanel.Dock="Bottom" FontSize="13"/>
+                                </DockPanel>
+                            </MenuItem.Header>
+                        
+                    </MenuItem> 
+                    <MenuItem  >
+                            <MenuItem.Header>
+                                <DockPanel>
+                                    <Image Source="/resources/shipment-delete.png" DockPanel.Dock="Top"  Height="30"/>
+                                    <TextBlock Text="O'chirish" DockPanel.Dock="Bottom" FontSize="13"/>
+                                </DockPanel>
+                            </MenuItem.Header>
+                        
+                    </MenuItem> 
+                   
+                </Menu>
+                    <DataGrid Grid.Row="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Sotuvlar">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                <Menu>
+                    <MenuItem  >
+                        <MenuItem.Header>
+                            <DockPanel>
+                                <Image Source="/resources/shopping_cart-add.png" DockPanel.Dock="Top"  Height="30"/>
+                                <TextBlock Text="Qo'shish" DockPanel.Dock="Bottom" FontSize="13" />
+                            </DockPanel>
+                        </MenuItem.Header>
+
+                    </MenuItem>
+                    <MenuItem  >
+                        <MenuItem.Header>
+                            <DockPanel>
+                                <Image Source="/resources/shopping_cart-edit.png" DockPanel.Dock="Top"  Height="30"/>
+                                <TextBlock Text="O'zgartirish" DockPanel.Dock="Bottom" FontSize="13"/>
+                            </DockPanel>
+                        </MenuItem.Header>
+
+                    </MenuItem>
+                    <MenuItem  >
+                        <MenuItem.Header>
+                            <DockPanel>
+                                <Image Source="/resources/shopping_cart-delete.png" DockPanel.Dock="Top"  Height="30"/>
+                                <TextBlock Text="O'chirish" DockPanel.Dock="Bottom" FontSize="13"/>
+                            </DockPanel>
+                        </MenuItem.Header>
+
+                    </MenuItem>
+
+                </Menu>
+                    
+                <DataGrid Grid.Row="1"/>
+
+                </Grid>
+            </TabItem>  
+            <TabItem Header="Qoldiqlar">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                <Menu>
+                    <MenuItem  >
+                        <MenuItem.Header>
+                            <DockPanel>
+                                <Image Source="/resources/shopping_cart-add.png" DockPanel.Dock="Top"  Height="30"/>
+                                <TextBlock Text="Qo'shish" DockPanel.Dock="Bottom" FontSize="13" />
+                            </DockPanel>
+                        </MenuItem.Header>
+
+                    </MenuItem>
+                    <MenuItem  >
+                        <MenuItem.Header>
+                            <DockPanel>
+                                <Image Source="/resources/shopping_cart-edit.png" DockPanel.Dock="Top"  Height="30"/>
+                                <TextBlock Text="O'zgartirish" DockPanel.Dock="Bottom" FontSize="13"/>
+                            </DockPanel>
+                        </MenuItem.Header>
+
+                    </MenuItem>
+                    <MenuItem  >
+                        <MenuItem.Header>
+                            <DockPanel>
+                                <Image Source="/resources/shopping_cart-delete.png" DockPanel.Dock="Top"  Height="30"/>
+                                <TextBlock Text="O'chirish" DockPanel.Dock="Bottom" FontSize="13"/>
+                            </DockPanel>
+                        </MenuItem.Header>
+
+                    </MenuItem>
+
+                </Menu>
+                    
+                <DataGrid Grid.Row="1"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
 
 
-            <Button Grid.Column="1" Grid.Row="1"  Style="{StaticResource MaterialDesignFloatingActionButton}" Panel.ZIndex="2"   HorizontalAlignment="Right" VerticalAlignment="Bottom"  Click="add_Click" Name="add" Background="LightGreen"  Margin="20" Height="45" Width="45" >
-                <materialDesign:PackIcon Kind="Plus" Foreground="White" Height="30" Width="30"/>
-                
-            </Button>
-        <ListBox x:Name="list" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding Name}" Grid.ColumnSpan="2"/>
-                        <TextBlock Text="{Binding ShtrixKod}" Margin="0 0 10 0" Grid.Row="1"/>
-                        <TextBlock Text="{Binding Quantity}" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+          
     </Grid>
 </Window>

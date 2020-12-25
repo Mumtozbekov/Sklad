@@ -26,7 +26,6 @@ namespace Sklad
 
         public void Refresh()
         {
-            list.ItemsSource = Global.db.tovari.ToList();
 
         }
         public MainWindow()
@@ -43,7 +42,6 @@ namespace Sklad
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
-            Global.db.tovari.Remove((Tovar)list.SelectedItem);
             Global.db.SaveChanges();
 
 
