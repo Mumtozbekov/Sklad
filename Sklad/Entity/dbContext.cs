@@ -15,10 +15,14 @@ namespace Sklad.Entity
         public dbContext() : base("SkladDB")
         {
             Database.SetInitializer<dbContext>(new CreateDatabaseIfNotExists<dbContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<dbContext, Migrations.Configuration>());
             Configuration.AutoDetectChangesEnabled = true;
             Configuration.ValidateOnSaveEnabled = false;
+            
         }
-       
         public DbSet<Tovar> tovari { get; set; }
+        public DbSet<Skladi> sklads { get; set; }
+        public DbSet<Kontragent> kontragents { get; set; }
+
     }
 }

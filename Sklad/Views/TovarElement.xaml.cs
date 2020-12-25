@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sklad.Entity;
+using Sklad.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,24 @@ namespace Sklad.Views
         public TovarElement()
         {
             InitializeComponent();
+            DataContext = new Tovar();
+        } 
+        public TovarElement(Tovar tovar)
+        {
+            InitializeComponent();
+            DataContext = tovar;
+        }
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            Global.db.tovari.Add((Tovar)DataContext);
+            Global.db.SaveChanges();
+            Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cbKontragent.ItemsSource = Global.db.kontragents.ToList();
         }
     }
 }

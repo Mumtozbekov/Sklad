@@ -2,26 +2,96 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sklad.Views"
-        mc:Ignorable="d"
-        Title="TovarElement" Height="450" Width="800">
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="TovarElement" MinHeight="380" Width="770" Height="380" MinWidth="450">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Nomi:       " VerticalAlignment="Center"/>
-            <TextBox    MinWidth="200" Margin="20 5" HorizontalAlignment="Left"/>
+        <materialDesign:Card Padding="5" BorderThickness="1" Margin="5">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Orientation="Horizontal">
+                    <DockPanel>
+                        <TextBlock Text="Nomi:       " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Name}"   MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock  Text="Sana: " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
+                        <DatePicker SelectedDate="{Binding Sana}"  MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
+                    </DockPanel>
+
+                </WrapPanel>
+                <DockPanel Grid.Row="1">
+                    <TextBlock Text="Shtrix kod: " DockPanel.Dock="Left" Foreground="White"  VerticalAlignment="Center"/>
+                    <TextBox   Text="{Binding ShtrixKod}" MinWidth="200" Margin="20 5" HorizontalAlignment="Left"/>
+                </DockPanel>
+
+            </Grid>
+        </materialDesign:Card>
+     
+        <materialDesign:Card Padding="5" BorderThickness="1" Grid.Row="1" Margin="5">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Orientation="Horizontal">
+                    <DockPanel>
+                        <TextBlock Text="Yetkazib beruvchi: " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
+                        <ComboBox Name="cbKontragent" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="{Binding Kontragent_m.Name}" SelectedValuePath="Value"  MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock  Text="Turi: " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
+                        <ComboBox  Text="{Binding Turi}" IsEditable="False" MinWidth="120" Margin="20 5" HorizontalAlignment="Left">
+                            <ComboBoxItem Content="Tayyor maxsulot"/>
+                            <ComboBoxItem Content="Xom ashyo"/>
+                        </ComboBox>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock  Text="O'lchov birligi: " Foreground="White" VerticalAlignment="Center"/>
+                        <ComboBox  Text="{Binding OlchovBirligi}" DockPanel.Dock="Right" IsEditable="False" MinWidth="60" Margin="20 5" HorizontalAlignment="Left">
+                            <ComboBoxItem Content="Dona"/>
+                            <ComboBoxItem Content="Kg."/>
+                        </ComboBox>
+
+                    </DockPanel>
+
+                </WrapPanel>
+                <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                    <DockPanel>
+                        <TextBlock Text="Narxi: " DockPanel.Dock="Left" Foreground="White"  VerticalAlignment="Center"/>
+                        <TextBox   Text="{Binding Narxi}" MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
+                        
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="Miqdori: " Foreground="White"  VerticalAlignment="Center"/>
+                        <TextBox   Text="{Binding Quantity}" DockPanel.Dock="Right" MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <TextBlock Text="Summa: " Foreground="White"  VerticalAlignment="Center"/>
+                        <TextBox   Text="{Binding Summa}" DockPanel.Dock="Right" MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
+                    </DockPanel>
+                
+                </WrapPanel>
+
+              
+            </Grid>
+        </materialDesign:Card>
+        <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="5" x:Name="btnOk" Click="btnOk_Click" Content="OK"  Foreground="White" />
+            <Button Margin="5" x:Name="btnSave" Content="Saqlash" Foreground="White" />
+            <Button Margin="5" x:Name="btnClose" Content="Bekor qilish" Foreground="White" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock Text="Shtrix kod: " VerticalAlignment="Center"/>
-            <TextBox    MinWidth="200" Margin="20 5" HorizontalAlignment="Left"/>
-        </StackPanel>
-        
+
     </Grid>
 </Window>

@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Sklad.Models
 {
-    class Kontragent
+    public class Kontragent
     {
         [Key]
         public int id { get; set; }
         public string Name { get; set; }
         public string Adress { get; set; }
+        public string More { get; set; }
     }
 }

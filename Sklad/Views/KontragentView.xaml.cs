@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Sklad.Entity;
+using Sklad.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +19,18 @@ namespace Sklad.Views
     /// <summary>
     /// Логика взаимодействия для Kontragent.xaml
     /// </summary>
-    public partial class Kontragent : Window
+    public partial class KontragentView : Window
     {
-        public Kontragent()
+        public KontragentView()
         {
             InitializeComponent();
+            DataContext = new Kontragent();
+        }
+
+        private void btnOk_Click(object sender, RoutedEventArgs e)
+        {
+            Global.db.kontragents.Add((Kontragent)DataContext);
+            Global.db.SaveChanges();
         }
     }
 }

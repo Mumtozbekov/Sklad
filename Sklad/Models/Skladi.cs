@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sklad.Models
 {
-    class Sklad
+    public class Skladi
     {
         [Key]
         public int id { get; set; }

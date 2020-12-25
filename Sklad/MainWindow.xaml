@@ -10,9 +10,36 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Menu Height="25">
+            <MenuItem>
+                <MenuItem.Header>
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="FormatListText" />
+                        <TextBlock Text="Katalog" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </MenuItem.Header>
+                <MenuItem  Padding="0" Icon="{x:Null}" Name="miKontragent" Click="miKontragent_Click">
+                    <MenuItem.Header>
+                        <DockPanel>
+                            <materialDesign:PackIcon DockPanel.Dock="Left" Kind="DeliveryDiningOutline" Height="20" Width="20"/>
+                            <TextBlock Text="Yetkazuvchi" DockPanel.Dock="Right" Margin="10 0 0 0"/>
+                        </DockPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem/>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <DockPanel>
+                        <materialDesign:PackIcon Kind="FileReport" />
+                        <TextBlock Text="Xisobot" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
         <TabControl Grid.Row="1">
             <TabItem Header="Kirim">
                 <Grid>
@@ -22,7 +49,7 @@
                     </Grid.RowDefinitions>
                     
                 <Menu>
-                    <MenuItem  >
+                    <MenuItem Name="miAdd" Click="miAdd_Click" >
                             <MenuItem.Header>
                                 <DockPanel>
                                     <Image Source="/resources/shipment-add.png" DockPanel.Dock="Top"  Height="30"/>
@@ -31,7 +58,7 @@
                             </MenuItem.Header>
                         
                     </MenuItem> 
-                    <MenuItem  >
+                    <MenuItem  Name="miEdit" Click="miEdit_Click" >
                             <MenuItem.Header>
                                 <DockPanel>
                                     <Image Source="/resources/shipment-edit.png" DockPanel.Dock="Top"  Height="30"/>
@@ -40,7 +67,7 @@
                             </MenuItem.Header>
                         
                     </MenuItem> 
-                    <MenuItem  >
+                    <MenuItem  Name="miDel" Click="miDel_Click" >
                             <MenuItem.Header>
                                 <DockPanel>
                                     <Image Source="/resources/shipment-delete.png" DockPanel.Dock="Top"  Height="30"/>
@@ -51,7 +78,23 @@
                     </MenuItem> 
                    
                 </Menu>
-                    <DataGrid Grid.Row="1"/>
+                    <DataGrid x:Name="dgTovari" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50"/>
+                            <DataGridTextColumn Header="Sana" Binding="{Binding Sana}" Width="*"/>
+                            <DataGridTextColumn Header="Maxsulot nomi" Binding="{Binding Name}" Width="2*"/>
+                            <DataGridTextColumn Header="Sklad" Binding="{Binding Sklad_}" Width="*"/>
+                            <DataGridTextColumn Header="Yetkazib beruvchi" Binding="{Binding Kontragent_m.Name}" Width="1.5*"/>
+                            <DataGridTextColumn Header="Soni" Binding="{Binding Quantity}" Width="*"/>
+                            <DataGridTextColumn Header="Narxi" Binding="{Binding Narxi}" Width="*"/>
+                            <DataGridTextColumn Header="Qiymati" Binding="{Binding Summa}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="Sotuvlar">

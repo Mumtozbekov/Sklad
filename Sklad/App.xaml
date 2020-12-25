@@ -11,14 +11,7 @@
                                               />
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-                <ResourceDictionary Source="Styles/Buttons.xaml" />
 
-
-
-                <ResourceDictionary>
-
-
-                </ResourceDictionary>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

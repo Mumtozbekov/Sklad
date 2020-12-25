@@ -7,21 +7,31 @@ using System.Threading.Tasks;
 
 namespace Sklad.Models
 {
-    class Tovar
+    public class Tovar
     {
+        private double? quantity { get; set; }
+
         [Key]
         public int id { get; set; }
         public string Name { get; set; }
         public DateTime? Sana { get; set; }
-        public int Quantity { get; set; }
-        public string ShtrixKod { get; set; }
-        public double Narxi { get; set; }
-        public double Summa { get
+        public double? Quantity { get 
             {
-                return Quantity * Narxi;
+                return quantity;
+            }
+            set
+            {
+                quantity = value;
+                Summa = quantity * Narxi;
             }
         }
-        public Kontragent _Kontragent { get; set; }
-        public Sklad _Sklad { get; set; }
+        public string ShtrixKod { get; set; }
+        public string Turi { get; set; }
+        public string OlchoviBirligi { get; set; }
+        public double? Narxi { get; set;}
+        public double? Summa { get; set; }
+        public Kontragent Kontragent_m { get; 
+            set; }
+        public Skladi Sklad_m { get; set; }
     }
 }
