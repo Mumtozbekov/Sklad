@@ -1,0 +1,119 @@
+﻿<Window x:Class="Sklad.Views.SotuvView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:local="clr-namespace:Sklad.Views"
+        mc:Ignorable="d"
+        Title="SotuvView" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource MaterialDesignAccentRadioButton}">
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Foreground" Value="#aeea00"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Margin="5" Padding="5">
+            
+            <WrapPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Nomlanishi: "   Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox  Text="{Binding Name}" MinWidth="120" Margin="20 5" />
+                </StackPanel>
+                <Label Content="{Binding id}"  ContentStringFormat="Narxi: {0}"   Foreground="White" MinWidth="50" VerticalAlignment="Center" />
+                <StackPanel Orientation="Horizontal" Margin="20 0">
+                    <TextBlock  Text="Sana: "   Foreground="White" VerticalAlignment="Center"/>
+                    <DatePicker SelectedDate="{Binding Sana}"  MinWidth="100" Margin="10 5" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Sklad: "   Foreground="White" VerticalAlignment="Center"/>
+                    <ComboBox  Text="{Binding Sklad_m.Name}" IsEditable="False" MinWidth="120" Margin="20 5" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Xaridor: "   Foreground="White" VerticalAlignment="Center"/>
+                    <ComboBox  Text="{Binding Xaridor_m.Name}" IsEditable="False" MinWidth="120" Margin="20 5" HorizontalAlignment="Left"/>
+                </StackPanel>
+                <Border BorderThickness="1" CornerRadius="3" BorderBrush="Gray" Padding="3">
+                    
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="To'lov turi: "   Foreground="White"/>
+                    <StackPanel Margin="10 0 0 0" >
+                        <RadioButton Content="Naqd"  IsChecked="{Binding Naqd}"/>
+                        <RadioButton Content="O'tkazma" IsChecked="{Binding Otkazma}" />
+                    </StackPanel>
+                </StackPanel>
+                </Border>
+            </WrapPanel>
+        </materialDesign:Card>
+        <materialDesign:Card Margin="5" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel>
+                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                        <TextBlock  Text="Kategoriya: "   Foreground="White" VerticalAlignment="Center"/>
+                        <ComboBox  Text="{Binding Turi}" IsEditable="False" MinWidth="120" Margin="20 5 5 10" Name="cbKategoriya" SelectionChanged="cbKategoriya_SelectionChanged" HorizontalAlignment="Left">
+                            <ComboBoxItem Content="Tayyor maxsulot"/>
+                            <ComboBoxItem Content="Xom ashyo"/>
+                        </ComboBox>
+                        <Button Style="{StaticResource MaterialDesignFlatAccentButton}" Height="25" Width="25" Padding="0" Name="btnFiltrOtmen" Click="btnFiltrOtmen_Click">
+                            <materialDesign:PackIcon Kind="CloseCircle" Width="25" Height="25" Foreground="#ff4f42"/>
+                        </Button>
+                    </StackPanel>
+                    
+                    <DataGrid Name="dg" AutoGenerateColumns="False" CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding id}" Width="50" MinWidth="50"/>
+                            <DataGridTextColumn Header="Maxsulot nomi" IsReadOnly="True"  Binding="{Binding Name}" Width="2*" MinWidth="100"/>
+                            <DataGridTextColumn Header="Qoldiq" IsReadOnly="True"  Binding="{Binding Quantity}" Width="*" MinWidth="50"/>
+                            <DataGridTextColumn Header="Narxi" IsReadOnly="True"  Binding="{Binding Narxi}" Width="*" MinWidth="70"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+                <StackPanel VerticalAlignment="Center" Grid.Column="1" >
+                    <Button Width="50" Background="Transparent" Name="ToRight" Padding="0" Click="ToRight_Click">
+                        <materialDesign:PackIcon Kind="ArrowRight" Width="30" Height="30" Foreground="#aeea00" />
+                    </Button>
+                    <Label Content="Soni: "/>
+                    <TextBox  Name="tbCount" Height="25" TextInput="tbCount_TextInput" Width="100" Margin="3"/>
+                    <Button Width="50" Background="Transparent" Name="ToLeft" Padding="0" Margin="0 5 0 0" Click="ToLeft_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="30" Height="30" Foreground="#aeea00" />
+                    </Button>
+                </StackPanel>
+
+                <DataGrid Grid.Column="2" ItemsSource="{Binding Tovars}" Name="dg1" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding id}" Width="50" MinWidth="50"/>
+                        <DataGridTextColumn Header="Maxsulot nomi" IsReadOnly="True"  Binding="{Binding Name}" Width="*" MinWidth="120"/>
+                        <DataGridTextColumn Header="Miqdor" IsReadOnly="True"  Binding="{Binding Quantity}" Width="*" MinWidth="50"/>
+                        <DataGridTextColumn Header="Narxi" IsReadOnly="True"  Binding="{Binding Narxi}" Width="*" MinWidth="70"/>
+                        <DataGridTextColumn Header="Summa" IsReadOnly="True"  Binding="{Binding Summa}" Width="*" MinWidth="70"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </materialDesign:Card>
+
+        <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Margin="5" x:Name="btnOk" Click="btnOk_Click" Content="OK"  Foreground="White" />
+            <Button Margin="5" x:Name="btnSave" Content="Saqlash" Foreground="White" />
+            <Button Margin="5" x:Name="btnClose" Content="Bekor qilish" Foreground="White" />
+        </StackPanel>
+        <Label Grid.Row="2" HorizontalAlignment="Left" Margin="5 0 0 0" Foreground="Black" Content="{Binding Summa}" MinWidth="100" ContentStringFormat="Suma: {} "/>
+    </Grid>
+    
+    
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="Sklad.Views.XisobotView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns:local="clr-namespace:Sklad.Views"
+        mc:Ignorable="d"
+        Title="XisobotView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card Margin="5">
+            <WrapPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="20 0">
+                    <DatePicker Name="Data_ot" SelectedDateChanged="Data_ot_SelectedDateChanged"   MinWidth="100" Margin="10 5" />
+                    <TextBlock  Text="dan "  Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="20 0">
+                    <DatePicker  Name="Data_do" SelectedDateChanged="Data_ot_SelectedDateChanged" MinWidth="100" Margin="10 5" HorizontalAlignment="Left"/>
+                    <TextBlock  Text="gacha "   Foreground="White" VerticalAlignment="Center"/>
+                </StackPanel>
+                <Button Style="{StaticResource MaterialDesignFlatAccentButton}" Height="25" Width="25" Padding="0" Name="btnFiltrOtmen" Click="btnFiltrOtmen_Click">
+                    <materialDesign:PackIcon Kind="CloseCircle" Width="25" Height="25" Foreground="#ff4f42"/>
+                </Button>
+            </WrapPanel>
+        </materialDesign:Card>
+        <DataGrid Margin="5" Grid.Row="1" Name="dg" Loaded="dg_Loaded" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sana" IsReadOnly="True" Binding="{Binding Sana}" Width="50" MinWidth="80"/>
+                <DataGridTextColumn Header="Xujjat nomi" IsReadOnly="True"  Binding="{Binding Name}" Width="*" MinWidth="120"/>
+                <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_m}" Width="*" MinWidth="120"/>
+                <DataGridTextColumn Header="Xaridor" IsReadOnly="True"  Binding="{Binding Xaridor_m}" Width="*" MinWidth="120"/>
+                <DataGridTextColumn Header="Miqdor" IsReadOnly="True"  Binding="{Binding Quantity}" Width="*" MinWidth="50"/>
+                <DataGridTextColumn Header="Narxi" IsReadOnly="True"  Binding="{Binding Narxi}" Width="*" MinWidth="70"/>
+                <DataGridTextColumn Header="Summa" IsReadOnly="True"  Binding="{Binding Summa}" Width="*" MinWidth="70"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="3 0 0 0">
+            <Label Content="Umumiy xisob: " Foreground="Black" FontWeight="DemiBold"/>
+            <Label Name="lbSumma" MinWidth="50" Foreground="Black"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

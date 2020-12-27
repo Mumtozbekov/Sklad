@@ -2,6 +2,7 @@
 using Sklad.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace Sklad.Views
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            Global.db.tovari.Add((Tovar)DataContext);
+            Global.db.tovari.AddOrUpdate((Tovar)DataContext);
             Global.db.SaveChanges();
             Close();
         }

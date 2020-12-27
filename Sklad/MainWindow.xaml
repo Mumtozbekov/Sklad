@@ -31,7 +31,7 @@
                 </MenuItem>
                 <MenuItem/>
             </MenuItem>
-            <MenuItem>
+            <MenuItem Name="miOtchet" Click="miOtchet_Click">
                 <MenuItem.Header>
                     <DockPanel>
                         <materialDesign:PackIcon Kind="FileReport" />
@@ -78,21 +78,23 @@
                     </MenuItem> 
                    
                 </Menu>
-                    <DataGrid x:Name="dgTovari" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False">
+                    <DataGrid x:Name="dgTovari" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" GridLinesVisibility="All">
                         <DataGrid.Resources>
-                            <Style TargetType="{x:Type DataGridRow}">
+                            <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MaterialDesignDataGridRow}">
+                                
                                 <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
                             </Style>
+                            
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="50"/>
-                            <DataGridTextColumn Header="Sana" Binding="{Binding Sana}" Width="*"/>
-                            <DataGridTextColumn Header="Maxsulot nomi" Binding="{Binding Name}" Width="2*"/>
-                            <DataGridTextColumn Header="Sklad" Binding="{Binding Sklad_}" Width="*"/>
-                            <DataGridTextColumn Header="Yetkazib beruvchi" Binding="{Binding Kontragent_m.Name}" Width="1.5*"/>
-                            <DataGridTextColumn Header="Soni" Binding="{Binding Quantity}" Width="*"/>
-                            <DataGridTextColumn Header="Narxi" Binding="{Binding Narxi}" Width="*"/>
-                            <DataGridTextColumn Header="Qiymati" Binding="{Binding Summa}" Width="*"/>
+                            <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding id}" Width="50" MinWidth="50"/>
+                            <DataGridTextColumn Header="Sana" IsReadOnly="True"  Binding="{Binding Sana}" Width="*" MinWidth="100"/>
+                            <DataGridTextColumn Header="Maxsulot nomi" IsReadOnly="True"  Binding="{Binding Name}" Width="2*" MinWidth="150"/>
+                            <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_}" Width="*"/>
+                            <DataGridTextColumn Header="Yetkazib beruvchi" IsReadOnly="True"  Binding="{Binding Kontragent_m.Name}" Width="1.5*" MinWidth="150"/>
+                            <DataGridTextColumn Header="Soni" IsReadOnly="True"  Binding="{Binding Quantity}" Width="*" MinWidth="50"/>
+                            <DataGridTextColumn Header="Narxi" IsReadOnly="True"  Binding="{Binding Narxi}" Width="*" MinWidth="70"/>
+                            <DataGridTextColumn Header="Qiymati" IsReadOnly="True"  Binding="{Binding Summa}" Width="*" MinWidth="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -104,7 +106,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                 <Menu>
-                    <MenuItem  >
+                    <MenuItem Name="miAddSotuv" Click="miAddSotuv_Click" >
                         <MenuItem.Header>
                             <DockPanel>
                                 <Image Source="/resources/shopping_cart-add.png" DockPanel.Dock="Top"  Height="30"/>
@@ -133,9 +135,18 @@
                     </MenuItem>
 
                 </Menu>
-                    
-                <DataGrid Grid.Row="1"/>
 
+                    <DataGrid Grid.Row="1" Name="dgSotuvlar" CanUserAddRows="False" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding id}" Width="50" MinWidth="50"/>
+                            <DataGridTextColumn Header="Sana" IsReadOnly="True"  Binding="{Binding Sana}" Width="*" MinWidth="90"/>
+                            <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_m}" Width="*" MinWidth="50"/>
+                            <DataGridTextColumn Header="Xaridor" IsReadOnly="True"  Binding="{Binding Xaridor.Name}" Width="*" MinWidth="70"/>
+                            <DataGridTextColumn Header="To'lov turi" IsReadOnly="True"  Binding="{Binding Tolov_turi}" Width="*" MinWidth="70"/>
+                            <DataGridTextColumn Header="Summa" IsReadOnly="True"  Binding="{Binding Xaridor.Name}" Width="*" MinWidth="70"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
                 </Grid>
             </TabItem>  
             <TabItem Header="Qoldiqlar">

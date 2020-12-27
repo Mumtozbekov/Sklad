@@ -9,6 +9,19 @@
         mc:Ignorable="d" Loaded="Window_Loaded"
         Title="TovarElement" MinHeight="380" Width="770" Height="380" MinWidth="450">
     <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBoxBase}">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="Height" Value="25"/>
+                <Setter Property="Margin" Value="10 5 20 0"/>
+            </Style>
+            <Style TargetType="StackPanel" >
+                <Setter Property="Orientation" Value="Horizontal"/>
+                
+                
+            </Style>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -21,66 +34,65 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <WrapPanel Orientation="Horizontal">
-                    <DockPanel>
-                        <TextBlock Text="Nomi:       " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
-                        <TextBox Text="{Binding Name}"   MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock  Text="Sana: " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
+                    <StackPanel>
+                        <TextBlock Text="Nomi:       "   Foreground="White" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Name}"   MinWidth="200" Margin="20 5 20 5"  HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock  Text="Sana: "   Foreground="White" VerticalAlignment="Center"/>
                         <DatePicker SelectedDate="{Binding Sana}"  MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
-                    </DockPanel>
+                    </StackPanel>
 
                 </WrapPanel>
-                <DockPanel Grid.Row="1">
-                    <TextBlock Text="Shtrix kod: " DockPanel.Dock="Left" Foreground="White"  VerticalAlignment="Center"/>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="Shtrix kod: "   Foreground="White"  VerticalAlignment="Center"/>
                     <TextBox   Text="{Binding ShtrixKod}" MinWidth="200" Margin="20 5" HorizontalAlignment="Left"/>
-                </DockPanel>
+                </StackPanel>
 
             </Grid>
         </materialDesign:Card>
      
         <materialDesign:Card Padding="5" BorderThickness="1" Grid.Row="1" Margin="5">
             <Grid >
+               
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <WrapPanel Orientation="Horizontal">
-                    <DockPanel>
-                        <TextBlock Text="Yetkazib beruvchi: " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox Name="cbKontragent" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="{Binding Kontragent_m.Name}" SelectedValuePath="Value"  MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock  Text="Turi: " DockPanel.Dock="Left" Foreground="White" VerticalAlignment="Center"/>
+                    <StackPanel>
+                        <TextBlock Text="Yetkazib beruvchi: "   Foreground="White" VerticalAlignment="Center"/>
+                        <ComboBox Name="cbKontragent" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="{Binding Kontragent_m.Name}" SelectedValuePath="{Binding Kontragen_m.Name}"  MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock  Text="Turi: "   Foreground="White" VerticalAlignment="Center"/>
                         <ComboBox  Text="{Binding Turi}" IsEditable="False" MinWidth="120" Margin="20 5" HorizontalAlignment="Left">
                             <ComboBoxItem Content="Tayyor maxsulot"/>
                             <ComboBoxItem Content="Xom ashyo"/>
                         </ComboBox>
-                    </DockPanel>
-                    <DockPanel>
+                    </StackPanel>
+                    <StackPanel>
                         <TextBlock  Text="O'lchov birligi: " Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox  Text="{Binding OlchovBirligi}" DockPanel.Dock="Right" IsEditable="False" MinWidth="60" Margin="20 5" HorizontalAlignment="Left">
+                        <ComboBox  Text="{Binding OlchovBirligi}"   IsEditable="False" MinWidth="60" Margin="20 5" HorizontalAlignment="Left">
                             <ComboBoxItem Content="Dona"/>
                             <ComboBoxItem Content="Kg."/>
                         </ComboBox>
 
-                    </DockPanel>
+                    </StackPanel>
 
                 </WrapPanel>
                 <WrapPanel Grid.Row="1" Orientation="Horizontal">
-                    <DockPanel>
-                        <TextBlock Text="Narxi: " DockPanel.Dock="Left" Foreground="White"  VerticalAlignment="Center"/>
-                        <TextBox   Text="{Binding Narxi}" MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
+                    <StackPanel>
+                        <TextBlock Text="Narxi: "   Foreground="White" VerticalAlignment="Center" />
+                        <TextBox   Text="{Binding Narxi}" MinWidth="100"  />
                         
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Text="Miqdori: " Foreground="White"  VerticalAlignment="Center"/>
-                        <TextBox   Text="{Binding Quantity}" DockPanel.Dock="Right" MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
-                    </DockPanel>
-                    <DockPanel>
-                        <TextBlock Text="Summa: " Foreground="White"  VerticalAlignment="Center"/>
-                        <TextBox   Text="{Binding Summa}" DockPanel.Dock="Right" MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
-                    </DockPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Miqdori: " Foreground="White"  VerticalAlignment="Center"  />
+                        <TextBox   Text="{Binding Quantity}"   MinWidth="100"  />
+                    </StackPanel>
+                        
+                    <Label Content="{Binding Summa}" ContentStringFormat="Summa: {0} "   Foreground="White"  />
                 
                 </WrapPanel>
 

@@ -1,4 +1,5 @@
 ﻿using Sklad.Models;
+using Sklad.Models.Documents;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,7 @@ namespace Sklad.Entity
         public DbSet<Tovar> tovari { get; set; }
         public DbSet<Skladi> sklads { get; set; }
         public DbSet<Kontragent> kontragents { get; set; }
-
+        public DbSet<Xaridor> xaridors { get; set; }
+        public DbSet<DokumentProdaj>  dokumentProdajs { get; set; }
     }
 }

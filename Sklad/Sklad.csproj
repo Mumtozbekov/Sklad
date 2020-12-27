@@ -73,12 +73,20 @@
     </ApplicationDefinition>
     <Compile Include="Entity\Migrations\Configuration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Documents\DokumentProdaj.cs" />
     <Compile Include="Models\Kontragent.cs" />
+    <Compile Include="Models\Xaridor.cs" />
     <Compile Include="Views\KontragentView.xaml.cs">
       <DependentUpon>KontragentView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SotuvView.xaml.cs">
+      <DependentUpon>SotuvView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TovarElement.xaml.cs">
       <DependentUpon>TovarElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\XisobotView.xaml.cs">
+      <DependentUpon>XisobotView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -98,7 +106,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SotuvView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TovarElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\XisobotView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

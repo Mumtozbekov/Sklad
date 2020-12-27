@@ -28,6 +28,7 @@ namespace Sklad
         {
             Global.db.SaveChanges();
             dgTovari.ItemsSource = Global.db.tovari.ToList();
+            dgSotuvlar.ItemsSource = Global.db.dokumentProdajs.ToList();
         }
         public MainWindow()
         {
@@ -70,7 +71,23 @@ namespace Sklad
         {
             var win = new KontragentView();
             win.ShowDialog();
+            
             Refresh();
+        }
+
+        private void miAddSotuv_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new SotuvView();
+            win.ShowDialog();
+
+            Refresh();
+        }
+
+        private void miOtchet_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new XisobotView();
+            win.ShowDialog();
+
         }
     }
 }
