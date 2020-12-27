@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sklad.Models
 {
-    class Xaridor: Kontragent
+    public class Xaridor: Kontragent
     {
 
     }

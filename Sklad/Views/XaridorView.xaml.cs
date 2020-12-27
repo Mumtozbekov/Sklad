@@ -20,16 +20,16 @@ namespace Sklad.Views
     /// <summary>
     /// Логика взаимодействия для Kontragent.xaml
     /// </summary>
-    public partial class KontragentView : Window
+    public partial class XaridorView : Window
     {
 
         public void Refresh()
         {
             Global.db.SaveChanges();
-            dg.ItemsSource = Global.db.kontragents.ToList();
+            dg.ItemsSource = Global.db.xaridors.ToList();
         }
 
-        public KontragentView()
+        public XaridorView()
         {
             InitializeComponent();
             Refresh();
@@ -37,7 +37,7 @@ namespace Sklad.Views
 
         private void miAdd_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Kontragent();
+            DataContext = new Xaridor();
             ElementCard.Visibility = Visibility.Visible;
             miEdit.IsEnabled = miDelete.IsEnabled = dg.IsEnabled = false;
         }
@@ -46,7 +46,7 @@ namespace Sklad.Views
         {
             if (tbName.Text != string.Empty)
             {
-                Global.db.kontragents.AddOrUpdate((Kontragent)DataContext);
+                Global.db.xaridors.AddOrUpdate((Xaridor)DataContext);
                 miCancel_Click(null, null);
                 Refresh();
             }
@@ -65,14 +65,14 @@ namespace Sklad.Views
 
         private void miEdit_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = (Kontragent)dg.SelectedItem;
+            DataContext = (Xaridor)dg.SelectedItem;
             ElementCard.Visibility = Visibility.Visible;
             miEdit.IsEnabled = miDelete.IsEnabled = dg.IsEnabled = false;
         }
 
         private void miDelete_Click(object sender, RoutedEventArgs e)
         {
-            Global.db.kontragents.Remove((Kontragent)DataContext);
+            Global.db.xaridors.Remove((Xaridor)DataContext);
             Refresh();
         }
 

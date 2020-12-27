@@ -12,5 +12,7 @@ namespace Sklad.Models
         [Key]
         public int id { get; set; }
         public string Name { get; set; }
+        public string More { get; set; }
+        public string Adress { get; set; }
     }
 }

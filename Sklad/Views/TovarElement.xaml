@@ -7,7 +7,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sklad.Views"
         mc:Ignorable="d" Loaded="Window_Loaded"
-        Title="TovarElement" MinHeight="380" Width="770" Height="380" MinWidth="450">
+        Title="TovarElement" MinHeight="380" Width="770" Height="400" MinWidth="450">
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBoxBase}">
@@ -42,12 +42,16 @@
                         <TextBlock  Text="Sana: "   Foreground="White" VerticalAlignment="Center"/>
                         <DatePicker SelectedDate="{Binding Sana}"  MinWidth="100" Margin="20 5" HorizontalAlignment="Left"/>
                     </StackPanel>
-
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Shtrix kod: "   Foreground="White"  VerticalAlignment="Center"/>
+                        <TextBox   Text="{Binding ShtrixKod}" MinWidth="200" Margin="20 5" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Sklad: "   Foreground="White" VerticalAlignment="Center"/>
+                        <ComboBox Name="cbSklad" Text="{Binding Sklad_m.Name}" DisplayMemberPath="Name" SelectionChanged="cbSklad_SelectionChanged" MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                    </StackPanel>
                 </WrapPanel>
-                <StackPanel Grid.Row="1">
-                    <TextBlock Text="Shtrix kod: "   Foreground="White"  VerticalAlignment="Center"/>
-                    <TextBox   Text="{Binding ShtrixKod}" MinWidth="200" Margin="20 5" HorizontalAlignment="Left"/>
-                </StackPanel>
+                
 
             </Grid>
         </materialDesign:Card>
@@ -62,7 +66,7 @@
                 <WrapPanel Orientation="Horizontal">
                     <StackPanel>
                         <TextBlock Text="Yetkazib beruvchi: "   Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox Name="cbKontragent" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="{Binding Kontragent_m.Name}" SelectedValuePath="{Binding Kontragen_m.Name}"  MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                        <ComboBox Name="cbKontragent" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="Name" SelectionChanged="cbKontragent_SelectionChanged" MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock  Text="Turi: "   Foreground="White" VerticalAlignment="Center"/>

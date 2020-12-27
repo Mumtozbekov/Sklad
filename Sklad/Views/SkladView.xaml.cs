@@ -18,18 +18,18 @@ using System.Windows.Shapes;
 namespace Sklad.Views
 {
     /// <summary>
-    /// Логика взаимодействия для Kontragent.xaml
+    /// Логика взаимодействия для Sklad.xaml
     /// </summary>
-    public partial class KontragentView : Window
+    public partial class SkladView : Window
     {
 
         public void Refresh()
         {
             Global.db.SaveChanges();
-            dg.ItemsSource = Global.db.kontragents.ToList();
+            dg.ItemsSource = Global.db.sklads.ToList();
         }
 
-        public KontragentView()
+        public SkladView()
         {
             InitializeComponent();
             Refresh();
@@ -37,7 +37,7 @@ namespace Sklad.Views
 
         private void miAdd_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Kontragent();
+            DataContext = new Skladi();
             ElementCard.Visibility = Visibility.Visible;
             miEdit.IsEnabled = miDelete.IsEnabled = dg.IsEnabled = false;
         }
@@ -46,7 +46,7 @@ namespace Sklad.Views
         {
             if (tbName.Text != string.Empty)
             {
-                Global.db.kontragents.AddOrUpdate((Kontragent)DataContext);
+                Global.db.sklads.AddOrUpdate((Skladi)DataContext);
                 miCancel_Click(null, null);
                 Refresh();
             }
@@ -59,20 +59,21 @@ namespace Sklad.Views
             DataContext = null;
             ElementCard.Visibility = Visibility.Collapsed;
             if (dg.SelectedItem != null)
-                miEdit.IsEnabled = miDelete.IsEnabled = true;
-            dg.IsEnabled = true;
+                miEdit.IsEnabled = miDelete.IsEnabled=true;
+            dg.IsEnabled= true;
+
         }
 
         private void miEdit_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = (Kontragent)dg.SelectedItem;
+            DataContext = (Skladi)dg.SelectedItem;
             ElementCard.Visibility = Visibility.Visible;
             miEdit.IsEnabled = miDelete.IsEnabled = dg.IsEnabled = false;
         }
 
         private void miDelete_Click(object sender, RoutedEventArgs e)
         {
-            Global.db.kontragents.Remove((Kontragent)DataContext);
+            Global.db.sklads.Remove((Skladi)DataContext);
             Refresh();
         }
 

@@ -43,6 +43,23 @@ namespace Sklad.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cbKontragent.ItemsSource = Global.db.kontragents.ToList();
+            cbSklad.ItemsSource = Global.db.sklads.ToList();
+        }
+
+        private void cbKontragent_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (Kontragent)cbKontragent.SelectedItem;
+            ((Tovar)DataContext).Kontragent_m = item;
+            Global.db.SaveChanges();
+
+        }
+
+        private void cbSklad_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (Skladi)cbSklad.SelectedItem;
+            ((Tovar)DataContext).Sklad_m = item;
+            Global.db.SaveChanges();
+
         }
     }
 }

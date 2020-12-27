@@ -31,7 +31,7 @@ namespace Sklad.Models
         
         public string ShtrixKod { get; set; }
         public string Turi { get; set; }
-        public string OlchoviBirligi { get; set; }
+        public string OlchovBirligi { get; set; }
         public double? Narxi {
             get
             {

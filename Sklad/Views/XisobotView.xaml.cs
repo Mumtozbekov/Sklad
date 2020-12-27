@@ -47,7 +47,7 @@ namespace Sklad.Views
 
         private void btnFiltrOtmen_Click(object sender, RoutedEventArgs e)
         {
-            Data_do.SelectedDate =  Data_ot= null;
+            Data_do.SelectedDate =  Data_ot.SelectedDate= null;
             dg.ItemsSource = Global.db.dokumentProdajs.ToList();
             CalculateSum();
 

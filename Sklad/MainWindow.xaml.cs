@@ -1,5 +1,6 @@
 ﻿using Sklad.Entity;
 using Sklad.Models;
+using Sklad.Models.Documents;
 using Sklad.Views;
 using System;
 using System.Collections.Generic;
@@ -51,9 +52,12 @@ namespace Sklad
 
         private void miEdit_Click(object sender, RoutedEventArgs e)
         {
-            var win = new TovarElement((Tovar)dgTovari.SelectedItem);
-            win.ShowDialog();
-            Refresh();
+            if(dgSotuvlar.CurrentCell.Item!=null)
+            {
+                var win = new TovarElement((Tovar)dgTovari.SelectedItem);
+                win.ShowDialog();
+                Refresh();
+            }
         }
 
         private void miDel_Click(object sender, RoutedEventArgs e)
@@ -88,6 +92,41 @@ namespace Sklad
             var win = new XisobotView();
             win.ShowDialog();
 
+        }
+
+        private void MiXaridor_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new XaridorView();
+            win.ShowDialog();
+        }
+
+        private void miSklad_Click(object sender, RoutedEventArgs e)
+        {
+            var win = new SkladView();
+            win.ShowDialog();
+        }
+
+        private void miEdit1_Click(object sender, RoutedEventArgs e)
+        {
+            if(dgSotuvlar.CurrentCell.Item!=null)
+            {
+                var win = new SotuvView((DokumentProdaj)dgSotuvlar.CurrentCell.Item);
+                win.ShowDialog();
+
+                Refresh();
+            }
+                
+        }
+
+        private void dgSotuvlar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            miEdit1_Click(null, null);
+        }
+
+        private void miDelete1_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgSotuvlar.CurrentCell.Item != null)
+                Global.db.dokumentProdajs.Remove((DokumentProdaj)dgSotuvlar.CurrentCell.Item);
         }
     }
 }

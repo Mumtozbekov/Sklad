@@ -7,38 +7,23 @@
         mc:Ignorable="d" Loaded="Window_Loaded"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="MenuItem" BasedOn="{StaticResource MaterialDesignMenuItem}"/>
+    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Menu Height="25">
-            <MenuItem>
-                <MenuItem.Header>
-                    <DockPanel>
-                        <materialDesign:PackIcon Kind="FormatListText" />
-                        <TextBlock Text="Katalog" DockPanel.Dock="Right"/>
-                    </DockPanel>
-                </MenuItem.Header>
-                <MenuItem  Padding="0" Icon="{x:Null}" Name="miKontragent" Click="miKontragent_Click">
-                    <MenuItem.Header>
-                        <DockPanel>
-                            <materialDesign:PackIcon DockPanel.Dock="Left" Kind="DeliveryDiningOutline" Height="20" Width="20"/>
-                            <TextBlock Text="Yetkazuvchi" DockPanel.Dock="Right" Margin="10 0 0 0"/>
-                        </DockPanel>
-                    </MenuItem.Header>
-                </MenuItem>
-                <MenuItem/>
+        <Menu IsMainMenu="True">
+            <MenuItem Header="Katalog" Icon="{materialDesign:PackIcon Kind=FormatListText}" >
+                <MenuItem  Header="Yetkazuvchilar"  Name="miKontragent" Click="miKontragent_Click" Icon="{materialDesign:PackIcon Kind=DeliveryDiningOutline}"/>
+                <MenuItem  Header="Xaridorlar" Name="MiXaridor" Click="MiXaridor_Click" Icon="{materialDesign:PackIcon Kind=Shopping}" />
+                <MenuItem  Header="Skladlar" Name="miSklad" Click="miSklad_Click" Icon="{materialDesign:PackIcon Kind=FireplaceOff}" />
             </MenuItem>
-            <MenuItem Name="miOtchet" Click="miOtchet_Click">
-                <MenuItem.Header>
-                    <DockPanel>
-                        <materialDesign:PackIcon Kind="FileReport" />
-                        <TextBlock Text="Xisobot" DockPanel.Dock="Right"/>
-                    </DockPanel>
-                </MenuItem.Header>
-            </MenuItem>
+                <MenuItem Name="miOtchet" Header="Xisobot" Click="miOtchet_Click" Icon="{materialDesign:PackIcon Kind=FileReport}"/>
+
         </Menu>
         <TabControl Grid.Row="1">
             <TabItem Header="Kirim">
@@ -78,19 +63,12 @@
                     </MenuItem> 
                    
                 </Menu>
-                    <DataGrid x:Name="dgTovari" Grid.Row="1" AutoGenerateColumns="False" CanUserAddRows="False" GridLinesVisibility="All">
-                        <DataGrid.Resources>
-                            <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MaterialDesignDataGridRow}">
-                                
-                                <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
-                            </Style>
-                            
-                        </DataGrid.Resources>
+                    <DataGrid x:Name="dgTovari" Grid.Row="1" MouseDoubleClick="DataGridRow_MouseDoubleClick" Style="{StaticResource MaterialDesignDataGrid}" GridLinesVisibility="All" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding id}" Width="50" MinWidth="50"/>
-                            <DataGridTextColumn Header="Sana" IsReadOnly="True"  Binding="{Binding Sana}" Width="*" MinWidth="100"/>
+                            <DataGridTextColumn Header="Sana" IsReadOnly="True"  Binding="{Binding Sana}" Width="*" MinWidth="130"/>
                             <DataGridTextColumn Header="Maxsulot nomi" IsReadOnly="True"  Binding="{Binding Name}" Width="2*" MinWidth="150"/>
-                            <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_}" Width="*"/>
+                            <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_m.Name}" Width="*" MinWidth="50"/>
                             <DataGridTextColumn Header="Yetkazib beruvchi" IsReadOnly="True"  Binding="{Binding Kontragent_m.Name}" Width="1.5*" MinWidth="150"/>
                             <DataGridTextColumn Header="Soni" IsReadOnly="True"  Binding="{Binding Quantity}" Width="*" MinWidth="50"/>
                             <DataGridTextColumn Header="Narxi" IsReadOnly="True"  Binding="{Binding Narxi}" Width="*" MinWidth="70"/>
@@ -99,7 +77,7 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Sotuvlar">
+            <TabItem Header="Sotuvlar" >
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -115,7 +93,7 @@
                         </MenuItem.Header>
 
                     </MenuItem>
-                    <MenuItem  >
+                    <MenuItem Name="miEdit1" Click="miEdit1_Click" >
                         <MenuItem.Header>
                             <DockPanel>
                                 <Image Source="/resources/shopping_cart-edit.png" DockPanel.Dock="Top"  Height="30"/>
@@ -124,7 +102,7 @@
                         </MenuItem.Header>
 
                     </MenuItem>
-                    <MenuItem  >
+                    <MenuItem Name="miDelete1" Click="miDelete1_Click" >
                         <MenuItem.Header>
                             <DockPanel>
                                 <Image Source="/resources/shopping_cart-delete.png" DockPanel.Dock="Top"  Height="30"/>
@@ -136,60 +114,19 @@
 
                 </Menu>
 
-                    <DataGrid Grid.Row="1" Name="dgSotuvlar" CanUserAddRows="False" AutoGenerateColumns="False">
+                    <DataGrid Grid.Row="1" Name="dgSotuvlar" CanUserAddRows="False" AutoGenerateColumns="False" MouseDoubleClick="dgSotuvlar_MouseDoubleClick" GridLinesVisibility="All">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding id}" Width="50" MinWidth="50"/>
                             <DataGridTextColumn Header="Sana" IsReadOnly="True"  Binding="{Binding Sana}" Width="*" MinWidth="90"/>
-                            <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_m}" Width="*" MinWidth="50"/>
-                            <DataGridTextColumn Header="Xaridor" IsReadOnly="True"  Binding="{Binding Xaridor.Name}" Width="*" MinWidth="70"/>
+                            <DataGridTextColumn Header="Sklad" IsReadOnly="True"  Binding="{Binding Sklad_m.Name}" Width="*" MinWidth="50"/>
+                            <DataGridTextColumn Header="Xaridor" IsReadOnly="True"  Binding="{Binding Xaridor_m.Name}" Width="*" MinWidth="70"/>
                             <DataGridTextColumn Header="To'lov turi" IsReadOnly="True"  Binding="{Binding Tolov_turi}" Width="*" MinWidth="70"/>
-                            <DataGridTextColumn Header="Summa" IsReadOnly="True"  Binding="{Binding Xaridor.Name}" Width="*" MinWidth="70"/>
+                            <DataGridTextColumn Header="Summa" IsReadOnly="True"  Binding="{Binding Summa}" Width="*" MinWidth="70"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     
                 </Grid>
             </TabItem>  
-            <TabItem Header="Qoldiqlar">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                <Menu>
-                    <MenuItem  >
-                        <MenuItem.Header>
-                            <DockPanel>
-                                <Image Source="/resources/shopping_cart-add.png" DockPanel.Dock="Top"  Height="30"/>
-                                <TextBlock Text="Qo'shish" DockPanel.Dock="Bottom" FontSize="13" />
-                            </DockPanel>
-                        </MenuItem.Header>
-
-                    </MenuItem>
-                    <MenuItem  >
-                        <MenuItem.Header>
-                            <DockPanel>
-                                <Image Source="/resources/shopping_cart-edit.png" DockPanel.Dock="Top"  Height="30"/>
-                                <TextBlock Text="O'zgartirish" DockPanel.Dock="Bottom" FontSize="13"/>
-                            </DockPanel>
-                        </MenuItem.Header>
-
-                    </MenuItem>
-                    <MenuItem  >
-                        <MenuItem.Header>
-                            <DockPanel>
-                                <Image Source="/resources/shopping_cart-delete.png" DockPanel.Dock="Top"  Height="30"/>
-                                <TextBlock Text="O'chirish" DockPanel.Dock="Bottom" FontSize="13"/>
-                            </DockPanel>
-                        </MenuItem.Header>
-
-                    </MenuItem>
-
-                </Menu>
-                    
-                <DataGrid Grid.Row="1"/>
-
-                </Grid>
-            </TabItem>
         </TabControl>
 
 

@@ -35,6 +35,12 @@ namespace Sklad.Views
             ((DokumentProdaj)DataContext).Tovars = new List<Tovar>();
             Refresh();
         }
+        public SotuvView(DokumentProdaj dokumentProdaj)
+        {
+            InitializeComponent();
+            DataContext = dokumentProdaj;
+            Refresh();
+        }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +102,24 @@ namespace Sklad.Views
             if (!Double.TryParse(e.Text, out _))
                 e.Handled = true;
             
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            cbSklad.ItemsSource = Global.db.sklads.ToList();
+            cbXaridor.ItemsSource = Global.db.xaridors.ToList();
+        }
+
+        private void cbXaridor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (Xaridor)cbXaridor.SelectedItem;
+            ((DokumentProdaj)DataContext).Xaridor_m = item;
+        }
+
+        private void cbSklad_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = (Skladi)cbSklad.SelectedItem;
+            ((DokumentProdaj)DataContext).Sklad_m = item;
         }
     }
 }

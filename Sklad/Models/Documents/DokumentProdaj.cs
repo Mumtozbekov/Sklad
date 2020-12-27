@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sklad.Models.Documents
 {
-    class DokumentProdaj
+    public class DokumentProdaj
     {
         [Key]
         public int id { get; set; }
@@ -18,6 +18,7 @@ namespace Sklad.Models.Documents
             get { return !Naqd; }
          set
             {
+                Naqd = !value;
                     Tolov_turi = value? "O'tkazma":"Naqd";
             } 
         }

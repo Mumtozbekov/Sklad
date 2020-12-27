@@ -12,7 +12,37 @@
 
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
 
+                <ResourceDictionary>
+                    <Style  TargetType="MenuItem" BasedOn="{StaticResource MaterialDesignMenuItem}">
+                        <Setter Property="VerticalAlignment" Value="Center"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="MenuItem">
+                                    <Border Padding="3" Margin="3" BorderThickness="1 0" BorderBrush="Gray">
+                                        <DockPanel>
+                                            <ContentControl Content="{TemplateBinding Icon}" DockPanel.Dock="Left"/>
+                                            <HeaderedContentControl Header="{TemplateBinding Header}" VerticalAlignment="Center"/>
+                                        </DockPanel>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Opacity" Value="0.4"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
 
+                    <!--<Style TargetType="DataGrid" BasedOn="{StaticResource MaterialDesignDataGrid}">
+                        <Setter Property="GridLinesVisibility" Value="All"/>
+                        <Setter Property="AutoGenerateColumns" Value="False"/>
+                        <Setter Property="CanUserAddRows" Value="False"/>
+                        <Setter Property="SelectionMode" Value="Single"/>
+                    </Style>
+                    <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}"/>-->
+
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
