@@ -121,5 +121,16 @@ namespace Sklad.Views
             var item = (Skladi)cbSklad.SelectedItem;
             ((DokumentProdaj)DataContext).Sklad_m = item;
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Global.db.dokumentProdajs.AddOrUpdate((DokumentProdaj)DataContext);
+            Global.db.SaveChanges();
+        }
     }
 }

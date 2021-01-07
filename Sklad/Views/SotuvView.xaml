@@ -67,7 +67,7 @@
                 <DockPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                         <TextBlock  Text="Kategoriya: "   Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox  Text="{Binding Turi}" IsEditable="False" MinWidth="120" Margin="20 5 5 10" Name="cbKategoriya" SelectionChanged="cbKategoriya_SelectionChanged" HorizontalAlignment="Left">
+                        <ComboBox  Text="{Binding Turi}" IsEditable="False" MinWidth="120" Margin="20 5 5 10" Name="cbKategoriya" SelectionChanged="cbKategoriya_SelectionChanged" HorizontalAlignment="Left" Foreground="White">
                             <ComboBoxItem Content="Tayyor maxsulot"/>
                             <ComboBoxItem Content="Xom ashyo"/>
                         </ComboBox>
@@ -110,8 +110,8 @@
 
         <StackPanel Grid.Row="3" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Margin="5" x:Name="btnOk" Click="btnOk_Click" Content="OK"  Foreground="White" />
-            <Button Margin="5" x:Name="btnSave" Content="Saqlash" Foreground="White" />
-            <Button Margin="5" x:Name="btnClose" Content="Bekor qilish" Foreground="White" />
+            <Button Margin="5" x:Name="btnSave" Content="Saqlash" Foreground="White" Click="btnSave_Click"/>
+            <Button Margin="5" x:Name="btnClose" Content="Bekor qilish" Foreground="White" Click="btnClose_Click" />
         </StackPanel>
         <Label Grid.Row="2" HorizontalAlignment="Left" Margin="5 0 0 0" Foreground="Black" Content="{Binding Summa}" MinWidth="100" ContentStringFormat="Suma: {} "/>
     </Grid>

@@ -48,7 +48,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1">
                         <TextBlock Text="Sklad: "   Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox Name="cbSklad" Text="{Binding Sklad_m.Name}" DisplayMemberPath="Name" SelectionChanged="cbSklad_SelectionChanged" MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                        <ComboBox Name="cbSklad" Text="{Binding Sklad_m.Name}" DisplayMemberPath="Name" SelectionChanged="cbSklad_SelectionChanged" Foreground="White" MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
                     </StackPanel>
                 </WrapPanel>
                 
@@ -66,18 +66,18 @@
                 <WrapPanel Orientation="Horizontal">
                     <StackPanel>
                         <TextBlock Text="Yetkazib beruvchi: "   Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox Name="cbKontragent" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="Name" SelectionChanged="cbKontragent_SelectionChanged" MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
+                        <ComboBox Name="cbKontragent" Foreground="White" Text="{Binding Kontragent_m.Name}" DisplayMemberPath="Name" SelectionChanged="cbKontragent_SelectionChanged" MinWidth="200" Margin="20 5 20 5" HorizontalAlignment="Left"/>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock  Text="Turi: "   Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox  Text="{Binding Turi}" IsEditable="False" MinWidth="120" Margin="20 5" HorizontalAlignment="Left">
+                        <ComboBox  Text="{Binding Turi}" IsEditable="False" Foreground="White" MinWidth="120" Margin="20 5" HorizontalAlignment="Left">
                             <ComboBoxItem Content="Tayyor maxsulot"/>
                             <ComboBoxItem Content="Xom ashyo"/>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel>
                         <TextBlock  Text="O'lchov birligi: " Foreground="White" VerticalAlignment="Center"/>
-                        <ComboBox  Text="{Binding OlchovBirligi}"   IsEditable="False" MinWidth="60" Margin="20 5" HorizontalAlignment="Left">
+                        <ComboBox  Text="{Binding OlchovBirligi}"  Foreground="White" IsEditable="False" MinWidth="60" Margin="20 5" HorizontalAlignment="Left">
                             <ComboBoxItem Content="Dona"/>
                             <ComboBoxItem Content="Kg."/>
                         </ComboBox>
